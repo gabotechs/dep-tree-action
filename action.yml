@@ -1,0 +1,10 @@
+name: 'dep-tree action'
+description: 'validates using dep-tree the current project'
+author: 'Gabriel Musat Mestre'
+inputs:
+  entrypoints:
+    required: true
+    description: 'entrypoints to evaluate'
+runs:
+  using: 'node16'
+  main: 'index.js'
