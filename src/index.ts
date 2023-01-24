@@ -27,8 +27,9 @@ function getAssetURL () {
             arch = "386"
             break
     }
+    platform = platform.charAt(0).toUpperCase() + platform.slice(1)
 
-    return `${downloadURL}/v${packageJson.version}/dep-tree-${packageJson.version}-${platform}-${arch}.${ext}`
+    return `${downloadURL}/v${packageJson.version}/dep-tree_${packageJson.version}_${platform}_${arch}.${ext}`
 }
 
 async function install() {
