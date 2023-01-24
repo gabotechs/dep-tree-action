@@ -1,10 +1,9 @@
-import * as core from "@actions/core"
-import * as tc from "@actions/tool-cache"
-import os from "os"
-import path from "path"
-import { exec } from "child_process"
-
-import packageJson from './package.json'
+const core = require("@actions/core")
+const tc = require("@actions/tool-cache")
+const os = require("os")
+const path = require("path")
+const exec = require("child_process")
+const packageJson = require('./package.json')
 
 const downloadURL = "https://github.com/gabotechs/dep-tree/releases/download"
 
