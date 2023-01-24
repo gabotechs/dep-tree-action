@@ -68,6 +68,7 @@ async function run() {
     const entrypoints = entrypointsInput.split(',').map(_ => _.trim())
     let hasFailed = false
     for (const entrypoint of entrypoints) {
+        core.info(`Checking entrypoint ${entrypoint}...`)
         const {
             stdout,
             stderr,
@@ -80,6 +81,7 @@ async function run() {
     if (hasFailed) {
         throw new Error()
     }
+    core.info(`All the rules are satisfied`)
 }
 
 run()
