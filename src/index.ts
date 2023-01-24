@@ -51,9 +51,7 @@ async function install() {
         extractedDir = await tc.extractTar(archivePath, process.env.HOME, args)
     }
 
-    const urlParts = assetURL.split(`/`)
-    const dirName = urlParts[urlParts.length - 1].replace(repl, ``)
-    const depTreePath = path.join(extractedDir, dirName, `dep-tree`)
+    const depTreePath = path.join(extractedDir, `dep-tree`)
     core.info(`Installed dep-tree into ${depTreePath} in ${Date.now() - startedAt}ms`)
     return depTreePath
 }
