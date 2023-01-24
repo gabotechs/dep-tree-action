@@ -56,7 +56,7 @@ async function install() {
     return depTreePath
 }
 
-export function asyncExec(cmd) {
+function asyncExec(cmd) {
     return new Promise(res => exec(cmd, (error, stdout, stderr) => {
         res({ stdout, stderr, error })
     }))
