@@ -1,9 +1,10 @@
-const core = require("@actions/core")
-const tc = require("@actions/tool-cache")
-const os = require("os")
-const path = require("path")
-const exec = require("child_process")
-const packageJson = require('./package.json')
+import * as core from "@actions/core"
+import * as tc from "@actions/tool-cache"
+import os from "os"
+import path from "path"
+import { exec } from "child_process"
+
+const packageJson = require('../package.json')
 
 const downloadURL = "https://github.com/gabotechs/dep-tree/releases/download"
 
@@ -33,7 +34,7 @@ function getAssetURL () {
 async function install() {
     core.info(`Installing dep-tree ${packageJson.version}...`)
     const startedAt = Date.now()
-    const assetURL = getAssetURL(packageJson.version)
+    const assetURL = getAssetURL()
     core.info(`Downloading ${assetURL} ...`)
     const archivePath = await tc.downloadTool(assetURL)
     let extractedDir
@@ -56,7 +57,7 @@ async function install() {
     return depTreePath
 }
 
-function asyncExec(cmd) {
+function asyncExec(cmd: string): any {
     return new Promise(res => exec(cmd, (error, stdout, stderr) => {
         res({ stdout, stderr, error })
     }))
