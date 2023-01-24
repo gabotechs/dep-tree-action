@@ -18,6 +18,15 @@ function getAssetURL () {
             break
     }
     let arch = os.arch()
+    switch (arch) {
+        case "x64":
+            arch = "x86_64"
+            break
+        case "x32":
+        case "ia32":
+            arch = "386"
+            break
+    }
     platform = platform.charAt(0).toUpperCase() + platform.slice(1)
 
     return `${downloadURL}/v${packageJson.version}/dep-tree_${packageJson.version}_${platform}_${arch}.${ext}`
