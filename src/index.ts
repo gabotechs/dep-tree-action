@@ -28,7 +28,7 @@ function getAssetURL () {
             break
     }
 
-    return `${downloadURL}/v${packageJson.version}/golangci-lint-${packageJson.version}-${platform}-${arch}.${ext}`
+    return `${downloadURL}/v${packageJson.version}/dep-tree-${packageJson.version}-${platform}-${arch}.${ext}`
 }
 
 async function install() {
