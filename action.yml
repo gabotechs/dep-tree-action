@@ -2,9 +2,9 @@ name: 'dep-tree action'
 description: 'validates using dep-tree the current project'
 author: 'Gabriel Musat Mestre'
 inputs:
-  entrypoints:
-    required: true
-    description: 'entrypoints to evaluate'
+  config:
+    required: false
+    description: 'config path [default .dep-tree.yml]'
 runs:
   using: 'node16'
   main: 'lib/index.js'

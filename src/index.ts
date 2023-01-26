@@ -64,21 +64,16 @@ function asyncExec(cmd: string): any {
 
 async function run() {
     const path = await install()
-    const entrypointsInput = core.getInput('entrypoints')
-    const entrypoints = entrypointsInput.split(',').map(_ => _.trim())
-    let hasFailed = false
-    for (const entrypoint of entrypoints) {
-        core.info(`Checking entrypoint ${entrypoint}...`)
-        const {
-            stdout,
-            stderr,
-            error
-        } = await asyncExec(`${path} ${entrypoint} --check`)
-        if (error != null) hasFailed = true
-        if (stdout != null) core.info(stdout)
-        if (stderr != null) core.info(stderr)
-    }
-    if (hasFailed) {
+    let configPath = core.getInput('config')
+    if (configPath === "") configPath = ".dep-tree.yml"
+    const {
+        stdout,
+        stderr,
+        error
+    } = await asyncExec(`${path} check --config ${configPath}`)
+    if (stdout != null) core.info(stdout)
+    if (stderr != null) core.info(stderr)
+    if (error != null) {
         throw new Error()
     }
     core.info(`All the rules are satisfied`)
