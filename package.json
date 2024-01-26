@@ -1,6 +1,6 @@
 {
   "name": "dep-tree-action",
-  "version": "0.17.6",
+  "version": "0.17.7",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/tool-cache": "^2.0.1"
